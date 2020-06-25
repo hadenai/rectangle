@@ -1,37 +1,33 @@
-x_brut = 1
-y_brut = 4
 
-x = x_brut -1
-y = y_brut -1
+puts "De quel longueur est largueur voulez vous votre rectangle ?"
 
+x = gets.chomp.to_i
+y = gets.chomp.to_i
 
 def abscisse(x)
-  boum = 0
-  abscisse = ["o", "-", "-", "o"]
+  abscisse = ["o", " ", " ", " ", "o"]
 
-  abscisse.each do |letter|
-    letter if boum < x
-    boum += 1
+  abscisse.each_with_index do |letter, index|
+    letter if index < x
   end
 end
 
 def ordonnée(y)
-  boum = 0
   ordonnée =  ["o", "-", "-", "-", "o"]
-  ordonnée.each do |letter|
-    letter if boum < y
-    boum += 1
+
+  ordonnée.each_with_index do |letter, index|
+    letter if index < y
   end
 end
 
 def calculate_rectangle(x, y)
 
   for i in 0..x
-    puts abscisse(x)*" "
-  end
-
-  for i in 0..y
-    puts ordonnée(y)*" "
+    if i >= 1 && i < x
+      puts abscisse(y)*" "
+    else
+      puts ordonnée(x)*" "
+    end
   end
 end
 
