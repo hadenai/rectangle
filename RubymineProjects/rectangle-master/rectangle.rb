@@ -15,7 +15,7 @@ def first_line(x)
     first_lines_end = ["/"]
   end
   content_of_lines = ["-"]
-  (first_lines_begin + content_of_lines * x) + first_lines_end
+  (first_lines_begin + content_of_lines * (x - 2)) + first_lines_end
 end
 
 def middle_lines(y)
@@ -30,7 +30,7 @@ def middle_lines(y)
     middle_lines_end = ["*"]
   end
   content_of_lines = [" "]
-  (middle_lines_begin + content_of_lines * y) + middle_lines_end
+  (middle_lines_begin + content_of_lines * (y - 2)) + middle_lines_end
 end
 
 def end_line(y)
@@ -45,7 +45,7 @@ def end_line(y)
     end_line_last = ["\\"]
   end
   content_of_lines = ["-"]
-  (end_line_begin + content_of_lines * y) + end_line_last
+  (end_line_begin + content_of_lines *(y - 2)) + end_line_last
 end
 
 def all_it_egal
@@ -59,21 +59,21 @@ def all_it_egal
 end
 
 def calculate_rectangle(x, y)
-  if x == 1 && x == 1
-    puts all_it_egal*" "
-  else
-    if x == 1
-      puts end_line(y)*" "
-    elsif y == 1
-      puts first_line(x)*" "
+    if x == 1 && x == 1
+      puts all_it_egal*" "
     else
-      puts first_line(x)*" "
-      for i in 0...y
-        puts middle_lines(y)*" "
+      if x == 1
+        puts end_line(y)*" ".split.join("")
+      elsif y == 1
+        puts first_line(x)*" ".split.join("")
+      else
+        puts first_line(x)*" ".split.join("")
+        for i in (0...y - 2)
+          puts middle_lines(y)*" ".split.join("")
+        end
+        puts end_line(y)*" ".split.join("")
       end
-      puts end_line(y)*" "
     end
   end
-end
 
-calculate_rectangle(x, y)
+  calculate_rectangle(x, y)
